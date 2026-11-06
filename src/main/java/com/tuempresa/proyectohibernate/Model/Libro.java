@@ -10,7 +10,7 @@ public class Libro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private long id;
+    private Long id;
 
     @Column(name = "titulo", nullable = false, length = 150)
     private String titulo;
@@ -24,7 +24,14 @@ public class Libro {
     @Column(name = "precio", nullable = false, precision = 10, scale = 2)
     private BigDecimal precio;
 
-    public Libro(long id, String titulo, String autor, int anioPublicacion, BigDecimal precio) {
+    public Libro(String titulo, String autor, int anioPublicacion, BigDecimal precio) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.anioPublicacion = anioPublicacion;
+        this.precio = precio;
+    }
+
+    public Libro(Long id, String titulo, String autor, int anioPublicacion, BigDecimal precio) {
         this.id = id;
         this.titulo = titulo;
         this.autor = autor;
@@ -33,6 +40,45 @@ public class Libro {
     }
 
     public Libro() {
+    }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public int getAnioPublicacion() {
+        return anioPublicacion;
+    }
+
+    public void setAnioPublicacion(int anioPublicacion) {
+        this.anioPublicacion = anioPublicacion;
+    }
+
+    public BigDecimal getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(BigDecimal precio) {
+        this.precio = precio;
     }
 }

@@ -1,6 +1,5 @@
 package com.tuempresa.proyectohibernate.Database;
 
-import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
@@ -18,17 +17,15 @@ public class JPAUtil {
                 throw new RuntimeException("DB_PASSWORD environment variable is not set or empty.");
             }
 
+            Map<String, String> properties = new HashMap<>();
+            properties.put("jakarta.persistence.jdbc.password", password);
+            entityManagerFactory = Persistence.createEntityManagerFactory("bibliotecaPU", properties);
         }
-        Map<String, String> properties = new HashMap<>();
-        properties.put("jakarta.persistence.jdbc.password", password);
-        entityManagerFactory = Persistence.createEntityManagerFactory
-                ("bibliotecaPU", properties);
-
     }
 
     public static EntityManagerFactory getEntityManagerFactory() {
         iniciar();
-        return entityManagerFactory.createEntityManager().getEntityManagerFactory();
+        return entityManagerFactory;
     }
 
     public static synchronized void cerrar(){

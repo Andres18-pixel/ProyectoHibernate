@@ -61,7 +61,7 @@ public class LibroController {
                 new PropertyValueFactory<>("autor")
         );
         colAnio.setCellValueFactory(
-                new PropertyValueFactory<>("anio")
+                new PropertyValueFactory<>("anioPublicacion")
         );
         colPrecio.setCellValueFactory(
                 new PropertyValueFactory<>("precio")
